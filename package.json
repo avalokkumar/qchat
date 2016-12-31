@@ -17,6 +17,7 @@
   "devDependencies": {
     "http": "0.0.0",
     "method-override": "^2.3.7",
-    "router": "^1.1.4"
+    "router": "^1.1.4",
+    "socket.io": "^1.7.2"
   }
 }

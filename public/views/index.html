@@ -5,6 +5,32 @@
     <title>Quick Chat Home Page</title>
     <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
     <link rel="stylesheet" href="../stylesheets/style.css">
+    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:3000');
+        socket.on('connect', function(){
+           $('#status').html("Connected to Quick Chat");
+            nickname = prompt('What is your nick name ?')
+
+            socket.emit('join', nickname);
+        });
+        var submitForm = function() {
+            var message = $('#chatInput').val();
+            console.log('message: '+ message);
+            $('#chatInput').val('');
+            socket.emit('messages', message);
+        };
+        socket.on('messages', function (data) {
+            showInScreen(data);
+        })
+        socket.on('message', function (data) {
+            showInScreen(data);
+        })
+        function showInScreen(data){
+            $('#messageText').append(data+'<br>');
+        }
+    </script>
 </head>
 <body ng-controller="qchatCtrl">
     <div class="header">
@@ -45,8 +71,9 @@
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Login</a></li>
                 </ul>
+                <div class="col-md-2"></div>
             </div>
         </div>
     </nav>
@@ -56,25 +83,27 @@
             <div class="col-md-2"></div>
             <div class="chatbox col-xs-12 col-md-8">
                 <div id="chatlist" class="leftMenu col-md-3"></div>
-                <div class="messageBox col-md-8">
-                    <div class="messageTxt col-md-12"></div>
-                    <form action="">
-                        <div class="textBox col-md-12">
-                            <textarea placeholder="Enter Message..." class="form-control" rows="5" id="comment"></textarea>
-                        </div>
+                <di class="messageBox col-md-8">
+                    <p id="status"></p>
+                    <div class="messageTxt col-md-12">
+                        <p id="messageText"></p>
+                    </div>
+                    <form id="chatForm" class="textBox col-md-12">
+                            <textarea id="chatInput" class="form-control" rows="3" placeholder="Enter Message..."></textarea>
+                            <input type="submit" class="submitBtn btn btn-primary" onclick="submitForm()">
                     </form>
                 </div>
             </div>
             <div class="col-md-2"></div>
         </div>
     </div>
+    <!--Bower Modules-->
     <script src="../../bower_components/angular/angular.js"></script>
-    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../../bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="../../bower_components/angular-aria/angular-aria.min.js"></script>
     <script src="../../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
+    <!--Custom Modules-->
     <script src="../qchat.js"></script>
     <script src="../javascripts/qchatCtrl.js"></script>
     <script src="../javascripts/constants.js"></script>
