@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Verdana');
+
+body {
+  background-image: url("../images/bg3.jpg");
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.chatbox{
+  background-image: url("../images/bg2.jpg");
+  margin: 2em;
+  padding: 1em;
+  height: 40em;
+  border: 0.3em solid #01101f;
+  border-radius: 1em;
+}
+#chatlist {
+  background-color: #c1e2b3;
+  height: 36em;
+  border: 0.2em solid #01101f;
+  border-radius: 1em;
+  float: left;
+}
+.messageBox{
+  font-family: 'Verdana',sans-serif;
+  border: 0.2em solid #01101f;
+  border-radius: 1em;
+  padding: 2em;
+  margin-left: 2em;
+  height: 36em;
+  background-color: #01101f;
+}
+
+.textBox{
+  width: 100%;
+  padding: 2em 0em 2em 0em;
+  float: none;
+/*  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  border-radius: 2em;*/
+}
+
+.messageTxt{
+  width: 100%;
+  height: 24em;
+  background-color: #c1e2b3;
+  border-radius: 1.2em;
+  padding: 2em 0em 2em 0em;
+  margin-bottom: 1em;
+
+}
