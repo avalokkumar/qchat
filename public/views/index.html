@@ -6,14 +6,16 @@
     <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
     <link rel="stylesheet" href="../stylesheets/style.css">
     <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="../javascripts/socket.io-1.4.5.js"></script>
     <script>
         var socket = io.connect('http://localhost:3000');
         socket.on('connect', function(){
            $('#status').html("Connected to Quick Chat");
             nickname = prompt('What is your nick name ?')
-
             socket.emit('join', nickname);
+        });
+        socket.on('disconnect', function(){
+            $('#status').html("Disconnected from Quick Chat");
         });
         var submitForm = function() {
             var message = $('#chatInput').val();
@@ -79,12 +81,11 @@
     </nav>
     </div>
     <div class="container">
-        <div class="">
+        <div class="row">
             <div class="col-md-2"></div>
             <div class="chatbox col-xs-12 col-md-8">
                 <div id="chatlist" class="leftMenu col-md-3"></div>
-                <di class="messageBox col-md-8">
-                    <p id="status"></p>
+                <div class="messageBox col-md-8">
                     <div class="messageTxt col-md-12">
                         <p id="messageText"></p>
                     </div>
@@ -93,9 +94,11 @@
                             <input type="submit" class="submitBtn btn btn-primary" onclick="submitForm()">
                     </form>
                 </div>
+                <p id="status"></p>
             </div>
             <div class="col-md-2"></div>
         </div>
+
     </div>
     <!--Bower Modules-->
     <script src="../../bower_components/angular/angular.js"></script>

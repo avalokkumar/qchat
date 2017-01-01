@@ -18,7 +18,7 @@ a {
   background-image: url("../images/bg2.jpg");
   margin: 2em;
   padding: 1em;
-  height: 40em;
+  height: 42em;
   border: 0.3em solid #01101f;
   border-radius: 1em;
 }
@@ -35,7 +35,7 @@ a {
   border-radius: 1em;
   padding: 2em;
   margin-left: 2em;
-  height: 36em;
+  height: 38em;
   background-color: #01101f;
 }
 
@@ -60,11 +60,17 @@ a {
 .submitBtn{
   margin-top: 0.2em;
 }
+
+#status{
+  margin-left: 16em;
+  color: #ffffff;
+  font-size: 1.5em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 #messageText{
   width: 90%;
   height: 2em;
-  background-color: #c0c0c0;
-  border-radius: 0.3em;
   padding: 0.2em;
   margin-left: 1em;
   margin-right: 1em;
